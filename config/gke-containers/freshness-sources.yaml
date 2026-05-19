@@ -1,0 +1,20 @@
+expert: gke-containers
+sources:
+  - url: https://cloud.google.com/kubernetes-engine/docs/concepts/kubernetes-engine-overview
+    pillar: operational-excellence
+  - url: https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview
+    pillar: operational-excellence
+  - url: https://cloud.google.com/kubernetes-engine/docs/concepts/node-pools
+    pillar: performance-efficiency
+  - url: https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler
+    pillar: cost-optimization
+  - url: https://cloud.google.com/kubernetes-engine/docs/concepts/workload-identity
+    pillar: security-compliance
+  - url: https://cloud.google.com/anthos/fleet-management/docs/fleet-concepts
+    pillar: operational-excellence
+  - url: https://cloud.google.com/kubernetes-engine/docs/concepts/network-overview
+    pillar: reliability
+  - url: https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept
+    pillar: security-compliance
+  - url: https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions
+    pillar: reliability

@@ -1,0 +1,20 @@
+expert: networking
+sources:
+  - url: https://cloud.google.com/vpc/docs/overview
+    pillar: reliability
+  - url: https://cloud.google.com/load-balancing/docs/load-balancing-overview
+    pillar: reliability
+  - url: https://cloud.google.com/armor/docs/cloud-armor-overview
+    pillar: security-compliance
+  - url: https://cloud.google.com/cdn/docs/overview
+    pillar: performance-efficiency
+  - url: https://cloud.google.com/dns/docs/overview
+    pillar: reliability
+  - url: https://cloud.google.com/nat/docs/overview
+    pillar: security-compliance
+  - url: https://cloud.google.com/vpc/docs/private-service-connect
+    pillar: security-compliance
+  - url: https://cloud.google.com/network-connectivity/docs/interconnect/concepts/overview
+    pillar: reliability
+  - url: https://cloud.google.com/vpc/docs/shared-vpc
+    pillar: operational-excellence

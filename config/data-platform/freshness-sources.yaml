@@ -1,0 +1,20 @@
+expert: data-platform
+sources:
+  - url: https://cloud.google.com/bigquery/docs/introduction
+    pillar: performance-efficiency
+  - url: https://cloud.google.com/bigquery/docs/storage-overview
+    pillar: cost-optimization
+  - url: https://cloud.google.com/dataflow/docs/overview
+    pillar: performance-efficiency
+  - url: https://cloud.google.com/dataproc/docs/concepts/overview
+    pillar: cost-optimization
+  - url: https://cloud.google.com/pubsub/docs/overview
+    pillar: reliability
+  - url: https://cloud.google.com/dataform/docs/overview
+    pillar: operational-excellence
+  - url: https://cloud.google.com/looker/docs/looker-overview
+    pillar: operational-excellence
+  - url: https://cloud.google.com/bigquery/docs/column-level-security-intro
+    pillar: security-compliance
+  - url: https://cloud.google.com/analytics-hub/docs/introduction
+    pillar: operational-excellence

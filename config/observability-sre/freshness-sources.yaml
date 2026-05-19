@@ -1,0 +1,20 @@
+expert: observability-sre
+sources:
+  - url: https://cloud.google.com/logging/docs/overview
+    pillar: operational-excellence
+  - url: https://cloud.google.com/monitoring/docs/monitoring-overview
+    pillar: reliability
+  - url: https://cloud.google.com/trace/docs/overview
+    pillar: performance-efficiency
+  - url: https://cloud.google.com/profiler/docs/concepts-profiling
+    pillar: performance-efficiency
+  - url: https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring
+    pillar: reliability
+  - url: https://cloud.google.com/monitoring/docs/alerting/overview
+    pillar: reliability
+  - url: https://cloud.google.com/logging/docs/logs-based-metrics
+    pillar: operational-excellence
+  - url: https://cloud.google.com/error-reporting/docs/overview
+    pillar: reliability
+  - url: https://cloud.google.com/managed-prometheus/docs/introduction
+    pillar: reliability

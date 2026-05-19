@@ -1,0 +1,18 @@
+expert: iam-org-policy
+sources:
+  - url: https://cloud.google.com/iam/docs/overview
+    pillar: operational-excellence
+  - url: https://cloud.google.com/iam/docs/conditions-overview
+    pillar: security-compliance
+  - url: https://cloud.google.com/resource-manager/docs/organization-policy/overview
+    pillar: security-compliance
+  - url: https://cloud.google.com/iam/docs/principal-identifiers
+    pillar: security-compliance
+  - url: https://cloud.google.com/iam/docs/workload-identity-federation
+    pillar: security-compliance
+  - url: https://cloud.google.com/iam/docs/deny-overview
+    pillar: security-compliance
+  - url: https://cloud.google.com/resource-manager/docs/tags/tags-overview
+    pillar: operational-excellence
+  - url: https://cloud.google.com/vpc-service-controls/docs/overview
+    pillar: security-compliance

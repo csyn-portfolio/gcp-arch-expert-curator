@@ -1,0 +1,18 @@
+expert: finops
+sources:
+  - url: https://cloud.google.com/billing/docs/how-to/budgets
+    pillar: cost-optimization
+  - url: https://cloud.google.com/billing/docs/how-to/export-data-bigquery
+    pillar: cost-optimization
+  - url: https://cloud.google.com/resource-manager/docs/creating-managing-labels
+    pillar: cost-optimization
+  - url: https://cloud.google.com/compute/docs/instances/signing-up-committed-use-discounts
+    pillar: cost-optimization
+  - url: https://cloud.google.com/compute/docs/sustained-use-discounts
+    pillar: cost-optimization
+  - url: https://cloud.google.com/billing/docs/how-to/pricing
+    pillar: cost-optimization
+  - url: https://cloud.google.com/billing/docs/how-to/billing-access
+    pillar: operational-excellence
+  - url: https://cloud.google.com/cost-management/docs/overview
+    pillar: cost-optimization

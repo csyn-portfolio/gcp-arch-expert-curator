@@ -1,0 +1,20 @@
+expert: iac-devops
+sources:
+  - url: https://cloud.google.com/docs/terraform/get-started-with-terraform
+    pillar: operational-excellence
+  - url: https://cloud.google.com/build/docs/overview
+    pillar: operational-excellence
+  - url: https://cloud.google.com/deploy/docs/overview
+    pillar: reliability
+  - url: https://cloud.google.com/artifact-registry/docs/overview
+    pillar: security-compliance
+  - url: https://cloud.google.com/iam/docs/workload-identity-federation-with-deployment-pipelines
+    pillar: security-compliance
+  - url: https://cloud.google.com/build/docs/securing-builds/use-secrets
+    pillar: security-compliance
+  - url: https://cloud.google.com/software-supply-chain-security/docs/overview
+    pillar: security-compliance
+  - url: https://cloud.google.com/deploy/docs/deployment-strategies/overview
+    pillar: reliability
+  - url: https://cloud.google.com/build/docs/automate-builds
+    pillar: operational-excellence

@@ -1,0 +1,20 @@
+expert: databases
+sources:
+  - url: https://cloud.google.com/sql/docs/introduction
+    pillar: reliability
+  - url: https://cloud.google.com/alloydb/docs/overview
+    pillar: performance-efficiency
+  - url: https://cloud.google.com/spanner/docs/whitepapers/overview
+    pillar: reliability
+  - url: https://cloud.google.com/firestore/docs/overview
+    pillar: operational-excellence
+  - url: https://cloud.google.com/bigtable/docs/overview
+    pillar: performance-efficiency
+  - url: https://cloud.google.com/memorystore/docs/redis/memorystore-for-redis-overview
+    pillar: performance-efficiency
+  - url: https://cloud.google.com/database-migration/docs/overview
+    pillar: operational-excellence
+  - url: https://cloud.google.com/sql/docs/mysql/high-availability
+    pillar: reliability
+  - url: https://cloud.google.com/alloydb/docs/ai/work-with-embeddings
+    pillar: performance-efficiency
