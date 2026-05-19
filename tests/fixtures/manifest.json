@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "canon_version": "v1",
+  "generated_by": "manual-scaffolding",
+  "experts": {
+    "iam-org-policy": { "version": "0.0.2", "last_updated": "2026-05-18", "status": "stub" },
+    "networking":     { "version": "0.0.1", "last_updated": "2026-05-16", "status": "stub" }
+  }
+}
