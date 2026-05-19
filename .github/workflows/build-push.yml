@@ -1,0 +1,57 @@
+name: build-push
+
+# Build and push the curator image to Artifact Registry on every push to main.
+# PR-gated quality checks live in ci.yml — by the time a commit reaches main
+# it has already passed pytest + ruff there. This workflow trusts that gate
+# and only does the docker build + push, matching the canon-publish.yml
+# pattern in the plugin repo.
+
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: build-push-main
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  id-token: write
+
+env:
+  AR_HOST: us-central1-docker.pkg.dev
+  AR_REPO: us-central1-docker.pkg.dev/gcp-arch-expert-platform/curator/curator
+
+jobs:
+  build-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Authenticate to GCP via WIF
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: projects/680731885789/locations/global/workloadIdentityPools/github-csyn-portfolio/providers/github
+          service_account: curator-builder@gcp-arch-expert-platform.iam.gserviceaccount.com
+
+      - name: Configure docker for Artifact Registry
+        run: gcloud auth configure-docker "$AR_HOST" --quiet
+
+      - name: Build image
+        run: |
+          docker build \
+            -t "${AR_REPO}:${GITHUB_SHA}" \
+            -t "${AR_REPO}:latest" \
+            .
+
+      - name: Push image (sha tag)
+        run: docker push "${AR_REPO}:${GITHUB_SHA}"
+
+      - name: Push image (latest tag)
+        run: docker push "${AR_REPO}:latest"
+
+      - name: Report
+        run: |
+          echo "Pushed ${AR_REPO}:${GITHUB_SHA}"
+          echo "Pushed ${AR_REPO}:latest"
