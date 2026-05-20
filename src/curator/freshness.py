@@ -12,6 +12,7 @@ from pathlib import Path
 import yaml
 
 from curator import git_ops, manifest, validator
+from curator._paths import CONFIG_DIR
 from curator.claude_client import ClaudeClient, build_freshness_request
 from curator.fetcher import fetch_all
 from curator.git_ops import shallow_clone
@@ -53,14 +54,11 @@ def _git_ops_create_branch(repo: Path, branch: str) -> None:
 
 
 def _load_prompt_prefix() -> str:
-    prompts_dir = Path(__file__).parent.parent.parent / "config" / "prompts"
-    return (prompts_dir / "freshness.md").read_text()
+    return (CONFIG_DIR / "prompts" / "freshness.md").read_text()
 
 
 def _load_sources(expert: str) -> list[str]:
-    config_path = (
-        Path(__file__).parent.parent.parent / "config" / expert / "freshness-sources.yaml"
-    )
+    config_path = CONFIG_DIR / expert / "freshness-sources.yaml"
     data = yaml.safe_load(config_path.read_text())
     return [entry["url"] for entry in data.get("sources", [])]
 
