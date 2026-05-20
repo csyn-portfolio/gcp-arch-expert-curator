@@ -1,13 +1,19 @@
-"""Anthropic SDK wrapper with prompt caching."""
+"""Anthropic SDK wrapper with prompt caching.
+
+Claude is invoked via Vertex AI Model Garden (AnthropicVertex adapter), not
+Anthropic's direct API. Auth is ADC via the Cloud Run runtime service account;
+no API key is required. See spec §14 in csyn-portfolio/gcp-arch-expert for the
+2026-05-20 migration rationale.
+"""
 from __future__ import annotations
 
 import os
 from dataclasses import dataclass
 from typing import Any
 
-import anthropic
+from anthropic import AnthropicVertex
 
-MODEL = "claude-opus-4-7"
+MODEL = "claude-sonnet-4-6"
 MAX_INPUT_TOKENS = int(os.environ.get("CURATOR_MAX_INPUT_TOKENS", "12000"))
 MAX_OUTPUT_TOKENS = int(os.environ.get("CURATOR_MAX_OUTPUT_TOKENS", "6000"))
 
@@ -80,12 +86,12 @@ def build_freshness_request(
 
 @dataclass
 class ClaudeClient:
-    api_key: str
+    project_id: str
+    region: str = "us"
 
     def __post_init__(self) -> None:
-        self._anthropic = anthropic.Anthropic(api_key=self.api_key)
+        self._anthropic = AnthropicVertex(project_id=self.project_id, region=self.region)
 
     def call(self, request: dict) -> str:
         response = self._anthropic.messages.create(**request)
-        # Concatenate all text blocks
         return "".join(b.text for b in response.content if b.type == "text")
