@@ -10,6 +10,7 @@ import tempfile
 from pathlib import Path
 
 from curator import git_ops, manifest, validator
+from curator._paths import CONFIG_DIR
 from curator.claude_client import ClaudeClient, build_promote_request
 from curator.git_ops import shallow_clone
 from curator.github_app import GitHubApp
@@ -53,8 +54,7 @@ def _git_ops_create_branch(repo: Path, branch: str) -> None:
 
 
 def _load_prompt_prefix() -> str:
-    prompts_dir = Path(__file__).parent.parent.parent / "config" / "prompts"
-    return (prompts_dir / "promote.md").read_text()
+    return (CONFIG_DIR / "prompts" / "promote.md").read_text()
 
 
 def run(*, expert: str, dry_run: bool, github_app: GitHubApp) -> str:
