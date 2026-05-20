@@ -4,6 +4,17 @@ from pathlib import Path
 import pytest
 
 
+@pytest.fixture(autouse=True)
+def _vertex_env(monkeypatch):
+    """Promote/freshness read GOOGLE_CLOUD_PROJECT before instantiating ClaudeClient.
+
+    Tests mock ClaudeClient, but the env read still happens. Set safe defaults
+    so tests don't need to set them individually.
+    """
+    monkeypatch.setenv("GOOGLE_CLOUD_PROJECT", "gcp-arch-expert-platform")
+    monkeypatch.setenv("ANTHROPIC_VERTEX_REGION", "us")
+
+
 @pytest.fixture
 def workdir(tmp_path: Path) -> Path:
     """Simulate a cloned plugin repo with iam-org-policy expert set up."""

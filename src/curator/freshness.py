@@ -91,7 +91,10 @@ def run(*, expert: str, dry_run: bool, github_app: GitHubApp) -> str:
     manifest_path = repo / "canon" / "_meta" / "manifest.json"
     current_canon = canon_path.read_text()
 
-    client = ClaudeClient(api_key=os.environ.get("ANTHROPIC_API_KEY", ""))
+    client = ClaudeClient(
+        project_id=os.environ["GOOGLE_CLOUD_PROJECT"],
+        region=os.environ.get("ANTHROPIC_VERTEX_REGION", "us"),
+    )
     request = build_freshness_request(
         system_prefix=_load_prompt_prefix(),
         fetched_docs=fetched_docs,
