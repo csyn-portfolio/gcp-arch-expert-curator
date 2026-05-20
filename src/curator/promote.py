@@ -64,8 +64,13 @@ def run(*, expert: str, dry_run: bool, github_app: GitHubApp) -> str:
     # (which shallow_clone then populates), or a pre-populated dir in tests.
     repo = workdir
 
+    # Mint the installation token once; the plugin repo is private, so the
+    # clone needs it. Re-used for push later. Tokens are valid for 1 hour;
+    # job timeout is 30m, so a single token covers the whole run.
+    token = github_app.installation_token()
+
     if not (repo / ".git").exists():  # tests pre-populate the workdir; production clones
-        shallow_clone(PLUGIN_REPO_URL, repo)
+        shallow_clone(PLUGIN_REPO_URL, repo, token=token)
 
     pending_dir = repo / "canon" / "LESSONS_PENDING" / expert
     processed_dir = repo / "canon" / "LESSONS_PROCESSED" / expert
@@ -130,7 +135,6 @@ def run(*, expert: str, dry_run: bool, github_app: GitHubApp) -> str:
     branch = f"curator/promote/{expert}/{datetime.datetime.utcnow().strftime('%Y%m%dT%H%M%SZ')}"
     _git_ops_create_branch(repo, branch)
     _git_ops_commit(repo, f"chore(canon): promote {len(pending_files)} lessons for {expert}")
-    token = github_app.installation_token()
     _git_ops_push(repo, branch, token)
 
     labels = ["curator/promote"]
