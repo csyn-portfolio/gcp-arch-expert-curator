@@ -84,8 +84,12 @@ def run(*, expert: str, dry_run: bool, github_app: GitHubApp) -> str:
     # (which shallow_clone then populates), or a pre-populated dir in tests.
     repo = workdir
 
+    # Mint the installation token once; the plugin repo is private, so the
+    # clone needs it. Re-used for push later. Tokens last 1 hour > 30m job timeout.
+    token = github_app.installation_token()
+
     if not (repo / ".git").exists():  # tests pre-populate the workdir; production clones
-        shallow_clone(PLUGIN_REPO_URL, repo)
+        shallow_clone(PLUGIN_REPO_URL, repo, token=token)
 
     canon_path = repo / "canon" / expert / "index.md"
     manifest_path = repo / "canon" / "_meta" / "manifest.json"
@@ -140,7 +144,6 @@ def run(*, expert: str, dry_run: bool, github_app: GitHubApp) -> str:
     branch = f"curator/freshness/{expert}/{datetime.datetime.utcnow().strftime('%Y%m%dT%H%M%SZ')}"
     _git_ops_create_branch(repo, branch)
     _git_ops_commit(repo, f"chore(canon): freshness pass for {expert}")
-    token = github_app.installation_token()
     _git_ops_push(repo, branch, token)
 
     labels = ["curator/freshness"]
